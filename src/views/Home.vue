@@ -1,18 +1,67 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card-panel probable-cases">
+          <div class="card-title center">
+            <h5 class="teal-text">Probable cases identified from app</h5>
+          </div>
+          <div class="card-panel" v-for="(person, index) in people" :key="index">
+            <div class="card-title center">
+              <h5> {{person['fname']+" "+person['lname']}} </h5><br>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <p> {{person['phone']}} </p>
+                <p> {{person['email']}} </p>
+              </div>
+              <div class="col-sm-6">
+                <a class="waves-effect waves-light btn white-text">Contacts</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import db from '@/firebase/init'
 
 export default {
   name: 'Home',
+  data(){
+    return{
+      people: []
+    }
+  },
+  mounted(){
+    db.collection('probable').get().then(
+      snapshot => {
+        snapshot.forEach(
+          doc => {
+            this.people.push(doc.data())
+          }
+        )
+      }
+    )
+    console.log("here")
+  },
+  methods: {
+    onlyUnique(value, index, self) { 
+      return self.indexOf(value) === index;
+    }
+  },
   components: {
-    HelloWorld
   }
+  
 }
 </script>
+
+<style>
+.probable-cases{
+  height: 100vh;
+}
+
+</style>
