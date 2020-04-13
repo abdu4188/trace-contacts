@@ -16,7 +16,9 @@
                 <p> {{person['email']}} </p>
               </div>
               <div class="col-sm-6">
-                <a class="waves-effect waves-light btn white-text">Contacts</a>
+                <router-link :to="{name: 'ContactsList', params : {id: person['user.uid']}}" >
+                  <a class="waves-effect waves-light btn white-text">Contacts</a>
+                </router-link>
               </div>
             </div>
           </div>
