@@ -5,16 +5,16 @@
           <div class="col-sm-4 card-panel">
             <div class="card-title center">
                 <h5>{{person['name']}}</h5>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <h6> {{person['phone']}} </h6>
+                <div class="list-detail">
+                    <div class="phone">
+                        <h6>Phone: {{person['phone']}} </h6>
                     </div>
-                    <div class="col-sm-4">
-                        <h6> {{person['location']}} </h6>
+                    <div class="location">
+                        <h6>Location: {{person['location']}} </h6>
                     </div>
-                </div>
-                <div class="col-sm-4">
-                    <h6> {{person['date']}} </h6>
+                </div><br>
+                <div class="center">
+                    <h6>Date: {{person['date']}} </h6>
                 </div>
             </div>
           </div>
@@ -69,5 +69,13 @@ export default {
 </script>
 
 <style>
-
+.list-detail{
+    width: 90%;
+}
+.phone{
+    float: left;
+}
+.location{
+    float: center;
+}
 </style>
