@@ -7,14 +7,14 @@
                 <h5>{{person['name']}}</h5>
                 <div class="row">
                     <div class="col-sm-4">
-                        <p> {{person['phone']}} </p>
+                        <h6> {{person['phone']}} </h6>
                     </div>
                     <div class="col-sm-4">
-                        <p> {{person['location']}} </p>
+                        <h6> {{person['location']}} </h6>
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <p> {{person['date']}} </p>
+                    <h6> {{person['date']}} </h6>
                 </div>
             </div>
           </div>
@@ -43,22 +43,27 @@ export default {
                 }
             }
         )
-    },
-    mounted(){
-        db.collection('log').doc(this.$route.params.id).get().then(
-            doc => {
-                if(doc.exists){
-                    this.people.push(
-                        {
-                            name : doc.data()['name'],
-                            phone: doc.data()['phone'],
-                            date: doc.data()['date'],
-                            location: doc.data()['location']
+        db.collection('log').where('user', '==', this.$route.params.id).get().then(
+            snapshot => {
+                snapshot.forEach(
+                    doc => {
+                        if(doc.exists){
+                            this.people.push(
+                                {
+                                    name : doc.data()['name'],
+                                    phone: doc.data()['phone'],
+                                    date: doc.data()['date'],
+                                    location: doc.data()['location']
+                                }
+                            )
                         }
-                    )
-                }
+                    }
+                )
             }
         )
+    },
+    mounted(){
+        
     }
 }
 </script>

@@ -36,7 +36,7 @@
                     <h6 class="center right">{{person['phone']}}</h6>
                 </div>
                 <div class="center detail-button">
-                    <a class="waves-effect waves-light btn" style="width: 10vw"> <span class="white-text">View Contacts</span></a>
+                     <router-link :to="{name: 'ContactsList', params : {id: person['uid']}}"><a class="waves-effect waves-light btn" style="width: 10vw"><span class="white-text">View Contacts</span></a></router-link>
                 </div>
             </div>
         </div>
