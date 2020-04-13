@@ -27,6 +27,11 @@ Vue.use(VueRouter)
       requiresAuth: true
     }
   },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: () => import('@/views/Auth/Signup')
+  }
 ]
 
 const router = new VueRouter({

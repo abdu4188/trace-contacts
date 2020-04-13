@@ -13,7 +13,7 @@
           </div>
           <p class="red-text center" v-if="passwordFeedback"> {{passwordFeedback}} </p>
           <div class="field center">
-              <button class="btn deep-purple">Login</button>
+              <button class="btn deep-teal">Login</button>
           </div>
       </form>
   </div>
