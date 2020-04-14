@@ -28,9 +28,17 @@ Vue.use(VueRouter)
     }
   },
   {
-    path: '/signup',
+    path: '/signup/:superu/:email',
     name: 'Signup',
     component: () => import('@/views/Auth/Signup')
+  },
+  {
+    path: '/adduser',
+    name: 'AddUser',
+    component: () => import('@/views/AddUser.vue'),
+    meta: {
+      requiresAuth: true
+    }
   }
 ]
 

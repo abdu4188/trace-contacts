@@ -55,7 +55,7 @@ name:'Login',
             }
         },
         checkAdmin(uid){
-            db.collection('users').doc(uid).get().then(
+            db.collection('admin').doc(uid).get().then(
                 doc => {
                     if(doc.data()['admin'])
                     {

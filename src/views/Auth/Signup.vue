@@ -63,7 +63,9 @@ export default {
             rePassword: null,
             emailFeedback: null,
             passwordFeedback: null,
-            rePasswordFeedback: null
+            rePasswordFeedback: null,
+            admin: null,
+            sentEmail: null,
         }
     },
     methods:{
@@ -79,6 +81,9 @@ export default {
             }
             if (this.email == null) {
                 this.emailFeedback = "Email is required"
+            }
+            if(this.email != this.sentEmail){
+                this.emailFeedback = "You can only register with the email address you recieved the invitaion with"
             }
             if (this.password == null) {
                 this.passwordFeedback = "Password is required"
@@ -97,7 +102,7 @@ export default {
                 firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(
                     cred => {
                         db.collection('admin').doc(cred.user.uid).set({
-                            admin: this.$route.params.admin,
+                            admin: this.admin,
                             email: this.email,
                             fname: this.firstName,
                             phone: this.phone,
@@ -115,6 +120,15 @@ export default {
                     }
                 )
             }
+        }
+    },
+    created(){
+        this.sentEmail = this.$route.params.email
+        if(this.$route.params.superu){
+            this.admin = "super"
+        }
+        else{
+            this.admin = "admin"
         }
     }
 }
