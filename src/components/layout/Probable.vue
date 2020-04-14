@@ -3,7 +3,7 @@
         <div class="card-title center">
             <h5 class="teal-text">Probable cases identified from app</h5>
         </div>
-        <div class="card" v-for="(person, index) in people" :key="index">
+        <div class="card inner-card" v-for="(person, index) in people" :key="index">
             <div class="card-title center">
                 <h5> {{person['fname']+" "+person['lname']}} </h5><br>
             </div>
@@ -50,8 +50,7 @@ export default {
 </script>
 
 <style>
-
-/* .probable-cases{
-  height: 100vh;
-} */
+.inner-card{
+  box-shadow: none;
+}
 </style>

@@ -21,4 +21,7 @@ export default {
 </script>
 
 <style>
+footer{
+  margin-top: 15vh;
+}
 </style>

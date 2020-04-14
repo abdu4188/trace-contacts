@@ -4,7 +4,7 @@
         <div class="nav-wrapper teal">
         <a href="#" class="brand-logo">Trace Contacts</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a> {{username}} </a></li>
+            <li v-if="loggedIn" style="margin-top: 1.6vh; margin-right: 3vw;"><h6><b> {{username}} </b></h6></li>
             <li v-if="superu"><a>Add user</a></li>
             <li v-if="loggedIn"  @click="logout()"><a>Logout</a></li>
             <li v-if="!loggedIn"><a>Login</a></li>
