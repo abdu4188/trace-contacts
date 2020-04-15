@@ -3,6 +3,9 @@ import App from './App.vue'
 import router from './router'
 import firebase from 'firebase'
 import VueProgressBar from 'vue-progressbar'
+import VuejsDialog from 'vuejs-dialog';
+
+import 'vuejs-dialog/dist/vuejs-dialog.min.css';
 
 const options = {
   color: '#bffaf3',
@@ -20,6 +23,7 @@ const options = {
 
 Vue.config.productionTip = false
 Vue.use(VueProgressBar, options)
+Vue.use(VuejsDialog);
 
 let app = null
 

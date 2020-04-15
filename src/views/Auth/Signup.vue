@@ -70,25 +70,33 @@ export default {
     },
     methods:{
         signup(){
+            this.$Progress.start()
             if (this.firstName == null) {
+                this.$Progress.fail()
                 this.firstNameFeedback = "First name is required"
             }
             if (this.lastName == null) {
+                this.$Progress.fail()
                 this.lastNameFeedback = "Last name is required"
             }
             if (this.phone == null) {
+                this.$Progress.fail()
                 this.phoneFeedback = "Phone number is required"
             }
             if (this.email == null) {
+                this.$Progress.fail()
                 this.emailFeedback = "Email is required"
             }
             if(this.email != this.sentEmail){
+                this.$Progress.fail()
                 this.emailFeedback = "You can only register with the email address you recieved the invitaion with"
             }
             if (this.password == null) {
+                this.$Progress.fail()
                 this.passwordFeedback = "Password is required"
             }
             if (this.password != this.rePassword) {
+                this.$Progress.fail()
                 this.rePasswordFeedback = "Passwords do not match"
             }
             if (this.firstName && this.lastName && this.email && this.phone && this.password && this.rePassword && this.password == this.rePassword) {
@@ -111,10 +119,12 @@ export default {
                         })
                     }
                 ).then( () => {
+                    this.$Progress.finish()
                     this.$router.push({name: 'Login'})
                 }
                 ).catch(
                     err => {
+                        this.$Progress.fail()
                         console.log(err.message)
                         this.rePasswordFeedback = err.message
                     }

@@ -39,7 +39,7 @@ export default {
     },
     methods: {
         sendEmail(){
-            console.log(this.email)
+            this.$Progress.start()
             let sendMail = firebase.functions().httpsCallable('sendMail');
             sendMail(
                 {
@@ -47,8 +47,14 @@ export default {
                     superu: this.superu
                 }
             ).then(
-                result => {
-                    console.log(result.data)
+                () => {
+                    this.$Progress.finish()
+                    this.$dialog.alert("User has been added successfuly. An email has been sent to the user.")
+                }
+            ).catch(
+                () => {
+                    this.$Progress.fail()
+                    this.$dialog.alert("Error! Please check the email address you inserted and make sure you are connected to the internet")
                 }
             )
         }
