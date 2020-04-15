@@ -50,6 +50,8 @@ export default {
                 () => {
                     this.$Progress.finish()
                     this.$dialog.alert("User has been added successfuly. An email has been sent to the user.")
+                    this.email = null,
+                    this.superu = false
                 }
             ).catch(
                 () => {
