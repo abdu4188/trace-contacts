@@ -36,6 +36,7 @@ name:'Login',
     },
     methods: {
         login(){
+            this.$Progress.start()
             if(this.email && this.password){
                 this.passwordFeedback = null
                 this.emailFeedback =  null
@@ -44,24 +45,29 @@ name:'Login',
                         this.checkAdmin(firebase.auth().currentUser.uid)
                     }
                 ).catch(err => {
+                    this.$Progress.fail()
                     this.passwordFeedback = err.message
                 })
             }
             else if(this.email == null){
+                this.$Progress.fail()
                 this.emailFeedback = "Please enter an email address"
             }
             else{
+                this.$Progress.fail()
                 this.passwordFeedback = "Please enter your password"
             }
         },
         checkAdmin(uid){
             db.collection('admin').doc(uid).get().then(
                 doc => {
-                    if(doc.data()['admin'])
+                    if(doc.exists)
                     {
+                        this.$Progress.finish()
                         this.$router.push({name: 'Home'})
                     }
                     else{
+                        this.$Progress.fail()
                         this.passwordFeedback = "Sorry you don't have admin access."
                     }
                 }

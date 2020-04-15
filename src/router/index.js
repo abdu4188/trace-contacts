@@ -11,33 +11,77 @@ Vue.use(VueRouter)
     name: 'Home',
     component: Home,
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      progress: {
+        func: [
+          {call: 'color', modifier: 'temp', argument: '#ffb000'},
+          {call: 'fail', modifier: 'temp', argument: '#6e0000'},
+          {call: 'location', modifier: 'temp', argument: 'top'},
+          {call: 'transition', modifier: 'temp', argument: {speed: '1.5s', opacity: '0.6s', termination: 400}}
+        ]
+      }
     }
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/Auth/Login')
+    component: () => import('@/views/Auth/Login'),
+    meta: {
+      progress: {
+        func: [
+          {call: 'color', modifier: 'temp', argument: '#ffb000'},
+          {call: 'fail', modifier: 'temp', argument: '#6e0000'},
+          {call: 'location', modifier: 'temp', argument: 'top'},
+          {call: 'transition', modifier: 'temp', argument: {speed: '1.5s', opacity: '0.6s', termination: 400}}
+        ]
+      }
+    }
   },
   {
     path: '/contactslist/:id',
     name: 'ContactsList',
     component: () => import('@/views/ContactsList'),
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      progress: {
+        func: [
+          {call: 'color', modifier: 'temp', argument: '#ffb000'},
+          {call: 'fail', modifier: 'temp', argument: '#6e0000'},
+          {call: 'location', modifier: 'temp', argument: 'top'},
+          {call: 'transition', modifier: 'temp', argument: {speed: '1.5s', opacity: '0.6s', termination: 400}}
+        ]
+      }
     }
   },
   {
     path: '/signup/:superu/:email',
     name: 'Signup',
-    component: () => import('@/views/Auth/Signup')
+    component: () => import('@/views/Auth/Signup'),
+    meta: {
+      progress: {
+        func: [
+          {call: 'color', modifier: 'temp', argument: '#ffb000'},
+          {call: 'fail', modifier: 'temp', argument: '#6e0000'},
+          {call: 'location', modifier: 'temp', argument: 'top'},
+          {call: 'transition', modifier: 'temp', argument: {speed: '1.5s', opacity: '0.6s', termination: 400}}
+        ]
+      }
+    }
   },
   {
     path: '/adduser',
     name: 'AddUser',
     component: () => import('@/views/AddUser.vue'),
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      progress: {
+        func: [
+          {call: 'color', modifier: 'temp', argument: '#ffb000'},
+          {call: 'fail', modifier: 'temp', argument: '#6e0000'},
+          {call: 'location', modifier: 'temp', argument: 'top'},
+          {call: 'transition', modifier: 'temp', argument: {speed: '1.5s', opacity: '0.6s', termination: 400}}
+        ]
+      }
     }
   }
 ]
