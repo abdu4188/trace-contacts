@@ -34,6 +34,9 @@ name:'Login',
             passwordFeedback: null
         }
     },
+    created(){
+        firebase.auth().signOut().then()
+    },
     methods: {
         login(){
             this.$Progress.start()

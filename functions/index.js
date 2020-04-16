@@ -22,7 +22,7 @@ exports.sendMail = functions.https.onCall((data, context) =>{
     const mailOptions = {
     from: `•••••••••@gmail.com`,
     to: data.email,
-    subject: 'contact form message',
+    subject: 'Contact tracing Registration',
     html: `<h2 style="color: teal">Hello, You have been invited to register for trace contacts app. Please finish the registration by clicking the following link.</h2><br>
                         <center><a style="font-size: 1.5em" href="https://track-acquintances.firebaseapp.com/signup/${data.superu}/${data.email}">
                            <b> Register </b><br>

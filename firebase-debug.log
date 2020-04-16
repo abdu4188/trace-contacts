@@ -1,0 +1,59 @@
+[debug] [2020-04-16T08:47:48.148Z] ----------------------------------------------------------------------
+[debug] [2020-04-16T08:47:48.150Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy --only functions
+[debug] [2020-04-16T08:47:48.151Z] CLI Version:   8.0.3
+[debug] [2020-04-16T08:47:48.151Z] Platform:      linux
+[debug] [2020-04-16T08:47:48.151Z] Node Version:  v12.14.0
+[debug] [2020-04-16T08:47:48.151Z] Time:          Thu Apr 16 2020 11:47:48 GMT+0300 (East Africa Time)
+[debug] [2020-04-16T08:47:48.152Z] ----------------------------------------------------------------------
+[debug] [2020-04-16T08:47:48.152Z] 
+[debug] [2020-04-16T08:47:48.166Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-16T08:47:48.167Z] > authorizing via signed-in user
+[debug] [2020-04-16T08:47:48.167Z] [iam] checking project track-acquintances for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2020-04-16T08:47:48.173Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/track-acquintances:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2020-04-16T08:48:01.190Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 16 Apr 2020 08:48:00 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1418","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-16T08:48:01.193Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/track-acquintances/serviceAccounts/track-acquintances@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2020-04-16T08:48:11.205Z] [functions] service account IAM check errored, deploy may fail:Server Error. getaddrinfo ENOTFOUND iam.googleapis.com {"name":"FirebaseError","children":[],"exit":2,"message":"Server Error. getaddrinfo ENOTFOUND iam.googleapis.com","original":{"errno":"ENOTFOUND","code":"ENOTFOUND","syscall":"getaddrinfo","hostname":"iam.googleapis.com"},"status":500}
+[info] 
+[info] === Deploying to 'track-acquintances'...
+[info] 
+[info] i  deploying functions
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script.
+[debug] [2020-04-16T08:48:23.710Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "firebase-admin": "^8.6.0",
+    "firebase-functions": "^3.3.0",
+    "nodemailer": "^6.4.6"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "firebase-functions-test": "^0.1.6"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2020-04-16T08:48:23.713Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/track-acquintances/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2020-04-16T08:48:23.714Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/track-acquintances/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2020-04-16T08:48:48.751Z] Error: getaddrinfo ENOTFOUND serviceusage.googleapis.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:60:26)
+[error] 
+[error] Error: Server Error. getaddrinfo ENOTFOUND serviceusage.googleapis.com

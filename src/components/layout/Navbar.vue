@@ -5,7 +5,7 @@
         <a href="#" class="brand-logo" style="margin-left: 1vw">Trace Contacts</a>
         <ul id="nav-mobile" class="right nav-links hide-on-med-and-down">
             <li v-if="loggedIn" style="margin-top: 1.6vh; margin-right: 3vw;"><h6><b> {{username}} </b></h6></li>
-            <li><router-link style=" color:white; text-decoration:none" :to="{name: 'Home'}">Home</router-link></li>
+            <li v-if="loggedIn"><router-link style=" color:white; text-decoration:none" :to="{name: 'Home'}">Home</router-link></li>
             <li v-if="loggedIn && superu"><router-link style=" color:white; text-decoration:none" :to="{name: 'AddUser'}">Add user</router-link></li>
             <li v-if="loggedIn"  @click="logout()"><a>Logout</a></li>
             <li v-if="!loggedIn"><a>Login</a></li>

@@ -28,6 +28,7 @@
 
 <script>
 import firebase from 'firebase'
+import db from '@/firebase/init'
 
 export default {
     name:'AddUser',
@@ -40,23 +41,41 @@ export default {
     methods: {
         sendEmail(){
             this.$Progress.start()
-            let sendMail = firebase.functions().httpsCallable('sendMail');
-            sendMail(
-                {
-                    email: this.email,
-                    superu: this.superu
-                }
-            ).then(
-                () => {
-                    this.$Progress.finish()
-                    this.$dialog.alert("User has been added successfuly. An email has been sent to the user.")
-                    this.email = null,
-                    this.superu = false
-                }
-            ).catch(
-                () => {
-                    this.$Progress.fail()
-                    this.$dialog.alert("Error! Please check the email address you inserted and make sure you are connected to the internet")
+            db.collection('admin').where('email', '==', this.email).get().then(
+                // console.log("here"),
+                snapshot => {
+                    if(snapshot.empty){
+                        console.log(snapshot.empty);
+                        
+                        let sendMail = firebase.functions().httpsCallable('sendMail');
+                        sendMail(
+                            {
+                                email: this.email,
+                                superu: this.superu
+                            }
+                        ).then(
+                            () => {
+                                console.log("then");
+                                this.$Progress.finish()
+                                this.$dialog.alert("User has been added successfuly. An email has been sent to the user.")
+                                this.email = null,
+                                this.superu = false
+                            }
+                        ).catch(
+                            () => {
+                                console.log("catch");
+                                
+                                this.$Progress.fail()
+                                this.$dialog.alert("Error! Please check the email address you inserted and make sure you are connected to the internet")
+                            }
+                        )
+                    }
+                    else{
+                        console.log("else");
+                        
+                        this.$Progress.fail()
+                        this.$dialog.alert("Error! The email address you entered is in use")
+                    }
                 }
             )
         }

@@ -99,7 +99,7 @@ export default {
                 this.$Progress.fail()
                 this.rePasswordFeedback = "Passwords do not match"
             }
-            if (this.firstName && this.lastName && this.email && this.phone && this.password && this.rePassword && this.password == this.rePassword) {
+            if (this.firstName && this.lastName && this.email && this.phone && this.password && this.rePassword && this.password == this.rePassword && this.email != this.$route.params.email) {
                 this.firstNameFeedback = null
                 this.lastNameFeedback = null
                 this.emailFeedback = null
@@ -133,6 +133,7 @@ export default {
         }
     },
     created(){
+        firebase.auth().signOut().then()
         this.sentEmail = this.$route.params.email
         if(this.$route.params.superu){
             this.admin = "super"
