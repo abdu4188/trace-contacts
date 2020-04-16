@@ -87,7 +87,7 @@ export default {
                 this.$Progress.fail()
                 this.emailFeedback = "Email is required"
             }
-            if(this.email != this.sentEmail){
+            if(this.email != null && this.email != this.$route.params.email){
                 this.$Progress.fail()
                 this.emailFeedback = "You can only register with the email address you recieved the invitaion with"
             }
